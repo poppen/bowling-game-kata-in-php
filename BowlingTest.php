@@ -29,5 +29,16 @@ class BowlingTest extends PHPUnit_Framework_TestCase
         }
         $this->assertEquals($this->game->score(), 20);
     }
+
+    public function testOneSpare()
+    {
+        $this->game->hit(5);
+        $this->game->hit(5);
+        $this->game->hit(3);
+        for ($i=0; $i < 17; $i++) {
+            $this->game->hit(0);
+        }
+        $this->assertEquals($this->game->score(), 16);
+    }
 }
 ?>
