@@ -18,8 +18,9 @@ class Bowling
     {
         $score = 0;
         for ($i=0; $i < count($this->throws); $i++) {
-            echo $score;
-            if ($this->throws[$i] + $this->throws[$i+1] == 10) {
+            if ($this->throws[$i] == 10) {
+                $score += (10 + $this->throws[$i+1] + $this->throws[$i+2]);
+            } else if ($this->throws[$i] + $this->throws[$i+1] == 10) {
                 $score += (10 + $this->throws[$i+2]);
                 $i += 1;
             } else {
