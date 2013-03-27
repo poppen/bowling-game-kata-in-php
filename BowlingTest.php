@@ -18,8 +18,8 @@ class BowlingTest extends PHPUnit_Framework_TestCase
     {
         for ($i=0; $i < 20; $i++) {
             $this->game->hit(0);
-            $this->assertEquals($this->game->score(), 0);
         }
+        $this->assertEquals($this->game->score(), 0);
     }
 }
 ?>
