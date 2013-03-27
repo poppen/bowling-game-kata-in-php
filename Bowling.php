@@ -1,17 +1,17 @@
 <?php
 class Bowling
 {
-	function __construct()
-	{
-	}
+    function __construct()
+    {
+    }
 
-	public function hit($pins)
-	{
-	}
+    public function hit($pins)
+    {
+    }
 
-	public function score()
-	{
-		return 0;
-	}
+    public function score()
+    {
+        return 0;
+    }
 }
 ?>
