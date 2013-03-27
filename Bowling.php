@@ -17,15 +17,17 @@ class Bowling
     public function score()
     {
         $score = 0;
-        for ($index=0; $index < count($this->throws); $index++) {
+        $index = 0;
+        for ($frame=0; $frame < 10; $frame++) {
             if ($this->is_strike($index)) {
                 $score += $this->strike_score($index);
+                $index++;
             } else if ($this->is_spare($index)) {
                 $score += $this->spare_score($index);
-                $index += 1;
+                $index += 2;
             } else {
                 $score += ($this->throws[$index] + $this->throws[$index+1]);
-                $index += 1;
+                $index += 2;
             }
         }
         return $score;
