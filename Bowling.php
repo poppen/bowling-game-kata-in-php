@@ -17,17 +17,40 @@ class Bowling
     public function score()
     {
         $score = 0;
-        for ($i=0; $i < count($this->throws); $i++) {
-            echo $score;
-            if ($this->throws[$i] + $this->throws[$i+1] == 10) {
-                $score += (10 + $this->throws[$i+2]);
-                $i += 1;
+        $index = 0;
+        for ($frame=0; $frame < 10; $frame++) {
+            if ($this->is_strike($index)) {
+                $score += $this->strike_score($index);
+                $index++;
+            } else if ($this->is_spare($index)) {
+                $score += $this->spare_score($index);
+                $index += 2;
             } else {
-                $score += ($this->throws[$i] + $this->throws[$i+1]);
-                $i += 1;
+                $score += ($this->throws[$index] + $this->throws[$index+1]);
+                $index += 2;
             }
         }
         return $score;
+    }
+
+    private function is_strike($index)
+    {
+        return $this->throws[$index] == 10;
+    }
+
+    private function is_spare($index)
+    {
+        return $this->throws[$index] + $this->throws[$index+1] == 10;
+    }
+
+    private function strike_score($index)
+    {
+        return 10 + $this->throws[$index+1] + $this->throws[$index+2];
+    }
+
+    private function spare_score($index)
+    {
+        return 10 + $this->throws[$index+2];
     }
 }
 ?>
