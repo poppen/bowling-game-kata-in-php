@@ -17,15 +17,15 @@ class Bowling
     public function score()
     {
         $score = 0;
-        for ($i=0; $i < count($this->throws); $i++) {
-            if ($this->throws[$i] == 10) {
-                $score += (10 + $this->throws[$i+1] + $this->throws[$i+2]);
-            } else if ($this->throws[$i] + $this->throws[$i+1] == 10) {
-                $score += (10 + $this->throws[$i+2]);
-                $i += 1;
+        for ($index=0; $index < count($this->throws); $index++) {
+            if ($this->throws[$index] == 10) {
+                $score += (10 + $this->throws[$index+1] + $this->throws[$index+2]);
+            } else if ($this->throws[$index] + $this->throws[$index+1] == 10) {
+                $score += (10 + $this->throws[$index+2]);
+                $index += 1;
             } else {
-                $score += ($this->throws[$i] + $this->throws[$i+1]);
-                $i += 1;
+                $score += ($this->throws[$index] + $this->throws[$index+1]);
+                $index += 1;
             }
         }
         return $score;
